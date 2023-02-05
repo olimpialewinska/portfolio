@@ -1,13 +1,359 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2b2e32 !important;
+  color: #fff !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+@media (max-width: 767px) {
+  #container {
+    margin: 0 !important;
+    height: auto !important;
+  }
+  .grid-containerr {
+    grid-template-columns: repeat(1, 1fr) !important;
+    padding: 10px !important;
+  }
+  .grid-containerrr {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 10px !important;
+  }
+  .element {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 30vh !important;
+  }
+  .grid-itemmm {
+    padding: 50px;
+  }
+  .mycard{
+    width: 100% !important;
+    margin: 0;
+  }
+  .containerform{
+    width: 100% !important;
+  }
+
+}
+
+.grid-itemmm {
+  background-color: lightgray;
+  border-radius: 8px;
+  padding: 80px;
+  text-align: center;
+}
+
+.grid-itemm {
+  background-image: url("/public/1.jpeg");
+  border-radius: 8px;
+ padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s transform;
+}
+
+.grid-itemm::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: 0.2s opacity;
+  pointer-events: none;
+}
+
+.grid-itemm:hover {
+  transform: scale(1.02);
+  z-index: 99999;
+}
+
+.grid-itemm:hover::after {
+  opacity: 1;
+}
+
+.grid-item {
+  border-radius: 8px;
+  text-align: center;
+}
+.h {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0 10px;
+}
+
+.p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#pudelko {
+  width: 350px;
+  height: 250px;
+  margin: 0 auto;
+  perspective: 600px;
+}
+
+#karta {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  text-align: center;
+  transition: 1s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+#pudelko:hover > #karta {
+  transform: rotateY(180deg);
+}
+
+#przod {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/public/7.png") no-repeat;
+  background-size: 100%;
+  border-radius: 6px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#tyl {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  line-height: 180px;
+  color: #fff;
+  font-size: 1.6em;
+  border-radius: 6px;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#container {
+  width: 100%;
+  height: 70vh;
+}
+
+.carousel-indicators {
+  display: hidden !important;
+}
+
+
+.image-modal {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.2s transform;
+}
+
+.modal-bg {
+  transition: 0.2s opacity;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 99999;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  color: white;
+}
+
+body {
+  background: #99aeff;
+}
+
+
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+
+.socialbtns,
+.socialbtns ul,
+.socialbtns li {
+  margin: 0;
+  padding: 10px;
+}
+
+.socialbtns li {
+  list-style: none outside none;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.socialbtns .fa {
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  padding-top: 12px;
+  border-radius: 50%;
+}
+
+.socialbtns .fa:hover {
+  color: #ffffff;
+  background-color: #000;
+  border: 1px solid #000;
+}
+
+.layout{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.mycard{
+  background-color: #fff;
+  width: 90%;
+  height: 100%;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin:0 auto;
+  justify-content: center;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons{
+  text-align: center; 
+  padding: 0;
+  margin: 0;
+}
+
+.green{
+  padding: 6px 24px;
+  background-color: rgb(0, 127, 0);
+  border: 0;
+  border-radius: 5px;
+  margin: 2px 10px;
+  color: #fff;
+  transition: 0.5s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.green:hover{
+  background-color: rgb(0, 84, 0);
+  color: #fff;
+}
+
+.red{
+  padding: 6px 12px;
+  background-color: rgb(169, 0, 0);
+  border: 0;
+  border-radius: 5px;
+  margin: 2px 10px;
+  color: #fff;
+  transition: 0.5s;
+  display: inline-block;
+}
+
+.red:hover{
+  background-color:  rgb(113, 0, 0);
+}
+
+.blue{
+  padding: 6px 24px;
+  background-color: rgb(0, 102, 255);
+  border: 0;
+  border-radius: 5px;
+  margin: 2px 10px;
+  color: #fff;
+  transition: 0.5s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.blue:hover{
+  background-color: rgb(0, 64, 159);
+  color: #fff;
+}
+
+.dropdown-menu.show{
+  z-index: 999999;
+}
+
+.table.table-striped{
+  margin-bottom: 130px;
+}
+
+.head{
+  background-color: #afafaf;
+}
+
+#navbarScrollingDropdown{
+  color: #99aeff;
+}
+
+.menuadd{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.center{
+  display: flex;
+  justify-content: center;
+  color: #2b2e32;
+}
+
+.containerform{
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 50px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.post {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 50vh;
+}
+
+
+
+
+
+
+
+
+

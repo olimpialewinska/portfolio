@@ -1,17 +1,28 @@
 import React from "react";
 
-function Gridelement(props){
-    return(
-        <div className="grid-itemmm" onClick={props.showImage(props.image)} 
+function Gridelement(props) {
+  return (
+    <div
+      className="grid-itemmm"
+      onClick={props.showImage(props.image)}
+      style={{
+        height: "100%",
+        borderRadius: "8px",
+        position: "relative",
+      }}
+    >
+      <div
+        className="grid-item-image"
         style={{
-            backgroundImage: `url(${props.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100%",
-            borderRadius: "8px",
+          backgroundImage: `url(${props.image})`,
         }}
-        />
-    )
+      ></div>
+      <div className="grid-item-overlay">
+        <div className="grid-item-text">{props.text}</div>
+      </div>
+      <div className="grid-item-arrow"></div>
+    </div>
+  );
 }
 
 export { Gridelement };

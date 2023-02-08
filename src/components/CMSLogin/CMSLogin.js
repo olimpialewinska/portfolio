@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   MDBBtn,
   MDBContainer,
@@ -8,9 +8,29 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
-import background from "../img/4.jpeg";
+
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function CMSLogin() {
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [pass, setPass]= useState('Zaloguj');
+     
+  const onLogin = (e) => {
+      e.preventDefault();
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          navigate("/dashboard")
+      })
+      .catch((error) => {
+          setPass("Niepoprawne dane");
+      });
+     
+  }
   return (
     <div>
       <MDBContainer fluid>
@@ -21,7 +41,7 @@ function CMSLogin() {
               style={{ borderRadius: "1rem", maxWidth: "400px" }}
             >
               <MDBCardBody className="p-5 d-flex flex-column align-items-center mx-auto w-100">
-                <h2 className="fw-bold mb-2 text-uppercase">Zaloguj</h2>
+                <h2 className="fw-bold mb-2 text-uppercase">{pass}</h2>
                 <p className="text-white-50 mb-5">Wprowadź email i hasło</p>
 
                 <MDBInput
@@ -31,6 +51,7 @@ function CMSLogin() {
                   id="formControlLg"
                   type="email"
                   size="lg"
+                  onChange={(e)=>setEmail(e.target.value)}
                 />
                 <MDBInput
                   wrapperClass="mb-4 mx-5 w-100"
@@ -39,12 +60,12 @@ function CMSLogin() {
                   id="formControlLg"
                   type="password"
                   size="lg"
+                  onChange={(e)=>setPassword(e.target.value)}
                 />
-                <div className="text-center text-md-start mt-4 pt-2">
-                  <MDBBtn className="mb-0 px-5" size="lg">
-                    Zaloguj
-                  </MDBBtn>
-                </div>
+
+                <MDBBtn onClick={onLogin}    >
+                  Zaloguj
+                </MDBBtn>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

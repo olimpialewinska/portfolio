@@ -6,7 +6,7 @@ function Element(props){
             backgroundImage: `url(${props.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: "70vh",
+            height: "76vh",
             borderRadius: "10px",
         }}
         />

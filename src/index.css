@@ -31,9 +31,6 @@ code {
     padding: 0 !important;
     height: 30vh !important;
   }
-  .grid-itemmm {
-    padding: 50px;
-  }
   .mycard{
     width: 100% !important;
     margin: 0;
@@ -41,14 +38,16 @@ code {
   .containerform{
     width: 100% !important;
   }
+  .grid-item-text{
+    font-size: 12px !important;
+  }
 
 }
 
 .grid-itemmm {
   background-color: lightgray;
   border-radius: 8px;
-  padding: 80px;
-  text-align: center;
+  aspect-ratio: 1;
 }
 
 .grid-itemm {
@@ -144,7 +143,8 @@ code {
 
 #container {
   width: 100%;
-  height: 70vh;
+  display: flex;
+  justify-content: center;
 }
 
 .carousel-indicators {
@@ -238,17 +238,14 @@ body {
 }
 
 .menu{
-  margin-top: 30px;
-  margin-bottom: 20px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .buttons{
-  text-align: center; 
-  padding: 0;
-  margin: 0;
+  display: flex; 
+  justify-content: space-between;
 }
 
 .green{
@@ -277,10 +274,12 @@ body {
   color: #fff;
   transition: 0.5s;
   display: inline-block;
+  cursor: pointer;
 }
 
 .red:hover{
   background-color:  rgb(113, 0, 0);
+  cursor: pointer;
 }
 
 .blue{
@@ -346,14 +345,138 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 50vh;
+  color:  #2b2e32;
+}
+
+.post p{
+  text-align: justify;
+}
+
+.post h4{
+  text-align: start;
+  margin-top: 10px;
+}
+
+.date{
+  color: #828181;
+}
+
+.grid-item-overlay {
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  padding: 32px;
+  background: linear-gradient(0deg, rgba(0,59,255,1) 0%, rgba(121,0,255,1) 100%);
+  font-size: 26px;
+  font-weight: bold;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.grid-itemmm:hover .grid-item-text {
+  transform: translateX(0);
+}
+
+.grid-item-text {
+  color: white;
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  transform: translateX(-16px);
+  transition: 0.2s transform;
+}
+
+.buttons2 {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.button2 {
+  border-radius: 24px;
+  border: 1px  solid rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
+  padding: 8px 12px;
+  transition: 0.2s background-color, 0.2s border;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.selected {
+  background-color:  rgba(0,59,255,1);
+}
+
+.button2:hover {
+  background-color: rgba(0,59,255,1);
+  border: 1px solid transparent;
 }
 
 
+.grid-itemmm:hover .grid-item-arrow {
+  opacity: 0.24;
+  transform: translateX(0);
+}
 
+.grid-item-arrow {
+  transform: translateX(16px);
+  position: absolute;
+  opacity: 0;
+  top: 24px;
+  right: 24px;
+  background-image: url(components/img/maximize.svg);
+  width: 48px;
+  transition: 0.2s transform, 0.2s opacity;
+  height: 48px;
+  background-size: contain;
+  filter: invert(100%);
+}
 
+.grid-itemmm:hover .grid-item-image {
+  transform: scale(1.1);
+}
 
+.grid-itemmm:hover .grid-item-overlay {
+  opacity: 0.9;
+}
 
+.grid-itemmm {
+  overflow: hidden;
+  cursor: pointer;
+}
 
+.grid-item-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  inset: 0;
+  transition: 0.2s transform;
+}
 
+.card {
+  max-width: 45ch;
+  max-height: 45ch;
+  background: grey;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 15px solid white;
+}
 
+.card:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+}
+
+.card-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  background: radial-gradient(ellipse at center, #eef0f2 0%, #90a2b2 100%);
+}

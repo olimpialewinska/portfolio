@@ -1,7 +1,36 @@
 import Carousel from "react-bootstrap/Carousel";
-import { Card } from "./card";
+import { Card } from "../Home/animatedcard";
+import React from "react";
+import "react-slideshow-image/dist/styles.css";
+import { useEffect, useState } from "react";
+import { db } from "../../firebase";
+import { getDocs, collection, query, limit, orderBy} from "firebase/firestore";
 
 function Home() {
+  const [imageUrls, setImageUrls] = useState([]);
+  useEffect(() => {
+    const load = async () => {
+      const citiesRef = collection(db, "Photos");
+
+      const q = query(citiesRef, orderBy("date", "desc"), limit(3));
+
+      const response = await getDocs(q);
+      const urls = await Promise.all(
+        response.docs.map((item) => {
+          const data = item.data();
+          return {
+            url: data.url,
+            description: data.description,
+          };
+        })
+      );
+
+      setImageUrls(urls);
+    };
+
+    load();
+  }, []);
+
   return (
     <div>
       <Carousel style={{ height: "100%" }}>
@@ -96,7 +125,7 @@ function Home() {
         </div>
         <hr className="hr"></hr>
         <div className="row text-center">
-          <h1 style={{ marginTop: 20 }}>Odkryj zdjęcia</h1>
+          <h1 style={{ marginTop: 20 }}>Odkryj najnowsze zdjęcia</h1>
         </div>
         <div
           className="grid-containerr"
@@ -108,34 +137,48 @@ function Home() {
             gridGap: 10,
           }}
         >
-          <div className="grid-item">
-            <Card image="1.jpeg" />
+           {imageUrls.map((image, i) => {
+          return (
+            <div className="grid-item" key={i}>
+            <Card  key={i}
+              image={image.url} />
           </div>
-          <div className="grid-item">
-            <Card image="2.jpeg" />
-          </div>
-          <div className="grid-item">
-            <Card image="3.jpeg" />
-          </div>
-        </div>
-        <hr className="hr"></hr>
-        <div className="row text-center">
-          <h1 style={{ marginTop: 20 }}>Najnowsze posty z bloga</h1>
+          );
+        })}
+
         </div>
       </div>
       <br />
+
       <div align="center" className="socialbtns">
-      <ul>
+        <ul>
           <li>
-            <a href="https://www.facebook.com/oskarlewinskifotografia" target="_blank" rel="noreferrer"  className="fa fa-lg fa-facebook"></a>
+            <a
+              href="https://www.facebook.com/oskarlewinskifotografia"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-facebook"></div>
+            </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/oskarlewinski/"  target="_blank" rel="noreferrer" className="fa fa-lg fa-instagram"></a>
+            <a
+              href="https://www.instagram.com/oskarlewinski/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-instagram"></div>
+            </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/lewinskiphotografia"  target="_blank" rel="noreferrer" className="fa fa-lg fa-facebook"></a>
+            <a
+              href="https://www.facebook.com/lewinskiphotografia"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-facebook"></div>
+            </a>
           </li>
-         
         </ul>
       </div>
     </div>

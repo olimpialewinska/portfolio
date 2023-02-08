@@ -1,73 +1,38 @@
-import React from "react";
-import { NavDropdown } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (!user){
+        navigate("/CMSLogin")
+      }
+    });
+  }, [navigate]);
+
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {});
+  };
   return (
     <div>
       <div className="layout">
         <div className="mycard">
           <div className="menu">
-            <a href="addpost" className="green">
-              DODAJ POST
+            <a href="addphotos" className="blue">
+              DODAJ ZDJĘCIA DO GALERII
             </a>
-          </div>
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead className="head">
-                <tr>
-                  <th>Tytuł</th>
-                  <th>Podgląd</th>
-                  <th>Data</th>
-                  <th>Status</th>
-                  <th>Akcje</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Loremsakjasxjksa nasxkjsansajkxa jsxnjasnxkjasnx
-                    bkasjnxkajsxaskn jbxsanxsaxkjsabas
-                  </td>
-                  <td>a</td>
-                  <td>
-                    a
-                  </td>
-                  <td>
-                  <NavDropdown id="navbarScrollingDropdown">
-                      <NavDropdown.Item href="#action3">
-                        Edytuj
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action4">
-                        Opublikuj
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Usuń
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </td>
-                </tr>
-                <tr>
-                  <td>a</td>
-                  <td>a</td>
-                  <td>a</td>
-                  <td>a</td>
-                  <td><NavDropdown id="navbarScrollingDropdown">
-                      <NavDropdown.Item href="#action3">
-                        Edytuj
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action4">
-                        Opublikuj
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Usuń
-                      </NavDropdown.Item>
-                    </NavDropdown></td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="red" onClick={handleLogout}>
+              WYLOGUJ
+            </div>
           </div>
         </div>
       </div>

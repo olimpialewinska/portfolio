@@ -34,6 +34,40 @@ function App() {
             ))}
           </Routes>
         </section>
+        <footer>
+        <hr className="hr"></hr>
+      <div align="center" className="socialbtns">
+        <ul>
+          <li>
+            <a
+              href="https://www.facebook.com/oskarlewinskifotografia"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-facebook"></div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/oskarlewinski/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-instagram"></div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/lewinskiphotografia"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="fa fa-lg fa-facebook"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+        </footer>
       </div>
     </Router>
   );

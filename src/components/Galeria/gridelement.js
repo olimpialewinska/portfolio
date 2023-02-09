@@ -7,7 +7,7 @@ function Gridelement(props) {
       onClick={props.showImage(props.image)}
       style={{
         height: "100%",
-        borderRadius: "8px",
+        borderRadius: props.borderRadius,
         position: "relative",
       }}
     >

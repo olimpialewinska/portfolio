@@ -54,6 +54,9 @@ const Gallery = () => {
 
   return (
     <div>
+      <div className="header">
+        Galeria
+      </div>
       <div className="buttons2">
         <div
           className={`button2 ${currentCategory === "" ? "selected" : ""}`}
@@ -91,6 +94,7 @@ const Gallery = () => {
               image={image.url}
               text={image.description}
               showImage={handleShow}
+              borderRadius="8px"
             />
           );
         })}

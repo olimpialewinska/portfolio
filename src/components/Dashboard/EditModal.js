@@ -1,6 +1,6 @@
 import React from "react";
 
-function MyModal(props) {
+function EditModal(props) {
   return (
     <>
       <div
@@ -14,14 +14,16 @@ function MyModal(props) {
         <div className="image-modal" style={{
           transform: `translateY(${props.visible ? 0 : -16}px)`,
         }}>
-          <img
+          <div
             style={{ maxWidth: "90vw", maxHeight: "90vh" }}
-            src={props.image} 
-          ></img>
+            
+          >
+            <h1>aaaaaaaaaaaa</h1>
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-export { MyModal };
+export { EditModal };

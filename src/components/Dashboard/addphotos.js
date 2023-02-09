@@ -9,8 +9,6 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
-
 function AddPhotos() {
   const [text, setText] = useState(null);
   const [imagesUpload, setImagesUpload] = useState(null);
@@ -20,8 +18,8 @@ function AddPhotos() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (!user){
-        navigate("/CMSLogin")
+      if (!user) {
+        navigate("/CMSLogin");
       }
     });
   }, [navigate]);
@@ -38,6 +36,7 @@ function AddPhotos() {
             url: downloadURL,
             description: text,
             date: Date.now(),
+            name: image.name,
           });
         });
       })

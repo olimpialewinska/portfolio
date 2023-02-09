@@ -1,11 +1,10 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 
-const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 20,
-  (x - window.innerWidth / 2) / 20,
-  1.1,
-];
+const calc = (x, y, t) => {
+  const rect = t.getBoundingClientRect()
+  return [-(y - rect.top - rect.height / 2) / 50, (x - rect.left - rect.width / 2) / 30, 1.08]
+}
 const trans = (x, y, s) => {
   return `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 };
@@ -14,19 +13,22 @@ function Card(prop) {
   const [props, set] = useSpring(
     () => ({
       xys: [0, 0, 1],
-      config: { mass: 10, tension: 300, friction: 40 },
+      config: { mass: 3, tension: 300, friction: 40 },
     }),
     []
   );
   return (
     <animated.div
-      className="card"
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      className="home-image"
+      onMouseMove={({ clientX: x, clientY: y, currentTarget }) => set({ xys: calc(x, y, currentTarget) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: props.xys.to(trans),  position: "relative",
-        width: "100%",
-        height: 300,
-      backgroundImage: `url(${prop.image})`,}}
+      style={{ transform: props.xys.to(trans),  position: "relative", height: prop.height, borderRadius: prop.borderRadius,
+      flex:1,
+      backgroundImage: `url(${prop.image})`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      }}
     />
   );
 }

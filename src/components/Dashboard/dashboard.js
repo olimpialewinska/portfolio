@@ -9,8 +9,8 @@ import { where } from "firebase/firestore";
 import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import { Photo } from "./photo";
 
-
 function Dashboard() {
+
   const navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -51,7 +51,7 @@ function Dashboard() {
             description: data.description,
             id: item.id,
             category: data.category,
-            name: data.name
+            name: data.name,
           };
         })
       );
@@ -100,7 +100,14 @@ function Dashboard() {
 
             {imageUrls.map((image, i) => {
               return (
-                <Photo key={i} image={image.url} text={image.description} id={image.id} name={image.name} category={image.category}/>
+                <Photo
+                  key={i}
+                  image={image.url}
+                  text={image.description}
+                  id={image.id}
+                  name={image.name}
+                  category={image.category}
+                />
               );
             })}
           </div>

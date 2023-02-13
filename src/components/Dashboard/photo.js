@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -6,6 +6,8 @@ import { EditModal } from "./EditModal";
 
 function Photo(props) {
   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
   const handleShow = (image) => () => {
     setShow(true);
   };
@@ -17,7 +19,7 @@ function Photo(props) {
         margin: 20,
         borderRadius: 8,
         display: "flex",
-        backgroundColor: "rgb(214, 214, 214)",
+        backgroundColor: "#E6E6FA",
         alignItems: "center",
         paddingRight: 32,
       }}
@@ -38,8 +40,11 @@ function Photo(props) {
       />
       <div style={{ flex: 1 }}>{props.text}</div>
       <div className="action-buttons">
-        <div onClick={handleShow}>
-          <div className="icon-button edit"></div>
+        <div>
+          <div
+            className="icon-button edit"
+            onClick={handleShow(props.text)}
+          ></div>
         </div>
         <div>
           <div
@@ -62,7 +67,12 @@ function Photo(props) {
           ></div>
         </div>
       </div>
-      <EditModal visible={show}/>
+      <EditModal
+        visible={show}
+        hide={handleClose}
+        text={props.text}
+        id={props.id}
+      />
     </div>
   );
 }

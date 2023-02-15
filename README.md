@@ -1,4 +1,4 @@
-# Photography Portfolio for Dad
+# Photography Portfolio
 ### This is a photography portfolio that I'm creating for my dad using React. The data is stored in Firestore and there is a dedicated Content Management Studio (CMS) that allows for adding, deleting, and updating photos. Additionally, the CMS enables the selection of a category for each photo, as well as the addition and editing of descriptions.
 
 ## Features
